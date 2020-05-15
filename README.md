@@ -1,6 +1,6 @@
 # GO RETWIS
 
-Headless Twitter clone using Go and Redis. This project is for learning Redis, and implemented base on (https://redis.io/topics/twitter-clone)[https://redis.io/topics/twitter-clone] 
+Headless Twitter clone using Go and Redis. This project is for learning Redis, and implemented base on [https://redis.io/topics/twitter-clone](https://redis.io/topics/twitter-clone) 
 
 ### Usage example
 
