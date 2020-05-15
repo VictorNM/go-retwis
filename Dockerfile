@@ -1,5 +1,13 @@
-FROM alpine:latest
+FROM golang:latest
 
-COPY ./bin/go-retwis /usr/bin/go-retwis
+RUN mkdir /app
 
-ENTRYPOINT ["go-retwis"]
+ADD . /app/
+
+WORKDIR /app
+
+RUN go build -o go-retwis .
+
+ENTRYPOINT ["/app/go-retwis"]
+
+EXPOSE 80
