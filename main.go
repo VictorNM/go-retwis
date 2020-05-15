@@ -19,18 +19,18 @@ func (v *myValidator) Validate(i interface{}) error {
 
 func main() {
 	var (
-		httpAddr  = strEnv("HTTP_ADDR", ":8080")
+		port      = strEnv("PORT", "80")
 		redisAddr = strEnv("REDIS_ADDR", ":6379")
 		redisPass = strEnv("REDIS_PASS", "")
 		redisDB   = intEnv("REDIS_DB", 0)
 		jwtSecret = strEnv("JWT_SECRET", "")
 	)
 
-	httpAddr 	= *flag.String("http-addr", httpAddr, "address for serving HTTP")
-	redisAddr 	= *flag.String("redis-addr", redisAddr, "address for redis")
-	redisPass	= *flag.String("redis-pass", "", "password for redis")
-	redisDB		= *flag.Int("redis-db", 0, "redis database index")
-	jwtSecret 	= *flag.String("jwt-secret", jwtSecret, "secret key for jwt")
+	port = *flag.String("port", port, "port for serving HTTP")
+	redisAddr = *flag.String("redis-addr", redisAddr, "address for redis")
+	redisPass = *flag.String("redis-pass", "", "password for redis")
+	redisDB = *flag.Int("redis-db", 0, "redis database index")
+	jwtSecret = *flag.String("jwt-secret", jwtSecret, "secret key for jwt")
 
 	flag.Parse()
 
@@ -47,7 +47,7 @@ func main() {
 	s.jwtSecret = jwtSecret
 	s.routes()
 
-	e.Logger.Fatal(s.e.Start(httpAddr))
+	e.Logger.Fatal(s.e.Start(":" + port))
 }
 
 func intEnv(name string, value int) int {
